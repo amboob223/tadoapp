@@ -1,0 +1,2 @@
+nodemon is used to check for constant changes in my server file
+cors is for browser to be able to talk to each other
