@@ -7,6 +7,19 @@ const pool = require("./db")
 //middleware
 app.use(cors())
 
+app.post("/try", async (req, res) => {
+
+
+    try {
+        const { name } = req.body
+        const data = await pool.query(
+            "INSERT INTO users(name)VALUES($1) RETURNING *", [name]
+        )
+        res.json(data.rows)
+    } catch (error) {
+        console.log(error)
+    }
+})
 app.get("/todos/:userEmail", async (req, res) => {
 
     console.log(req)
